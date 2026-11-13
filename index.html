@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YH Chain Reaction</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#172554">
+</head>
+<body>
+
+    <main class="game-container">
+
+        <header class="game-header">
+            <h1>YH Chain Reaction</h1>
+            <p>حرب النقط</p>
+        </header>
+
+        <section class="game-menu">
+            <h2>اختر طريقة اللعب</h2>
+
+            <div class="mode-buttons">
+                <button>ضد الكمبيوتر</button>
+                <button>لاعبان</button>
+                <button>3 لاعبين</button>
+                <button>4 لاعبين</button>
+            </div>
+        </section>
+
+
+<section id="players-screen">
+    <h2>🏆 ترتيب اللاعبين</h2>
+
+    <p>عدد الانتصارات لكل لاعب</p>
+
+    <div id="players-stats"></div>
+
+    <div class="players-actions">
+        <button id="players-back">رجوع</button>
+        <button id="begin-lottery">ابدأ القرعة</button>
+    </div>
+</section>
+
+<section id="starter-screen">
+    <h2>مين هيبدأ اللعب؟</h2>
+
+    <div id="starter-player">
+        <div id="starter-color"></div>
+        <h3 id="starter-name">جاري إجراء القرعة...</h3>
+    </div>
+
+    <p id="lottery-status">جاري اختيار أول لاعب عشوائيًا...</p>
+
+    <button id="start-match" disabled>انتظر الاختيار...</button>
+</section>
+
+
+        <section class="game-board-section">
+            <div class="game-info">
+    <div class="turn-indicator">
+        <div id="turn-player-color"></div>
+        <span id="turn-player-name">الأحمر</span>
+    </div>
+
+    <button id="exit-game">خروج</button>
+</div>
+
+            <div id="game-board"></div>
+        </section>
+
+    </main>
+<div id="exit-modal" class="modal-overlay">
+    <div class="exit-card">
+        <div class="exit-icon">↪</div>
+
+        <h2>الخروج من المباراة؟</h2>
+        <p>هل أنت متأكد أنك تريد إنهاء المباراة والعودة للقائمة الرئيسية؟</p>
+
+        <div class="exit-actions">
+            <button id="cancel-exit">إلغاء</button>
+            <button id="confirm-exit">خروج</button>
+        </div>
+    </div>
+</div>
+<div id="winner-screen" class="modal-overlay">
+    <div class="exit-card winner-card">
+        <div class="winner-icon">🏆</div>
+
+        <h2>انتهت المباراة!</h2>
+
+        <div id="winner-color"></div>
+
+        <h3 id="winner-name">الفائز</h3>
+
+        <p>أحسنت! لقد فزت بالمباراة.</p>
+
+        <div class="exit-actions">
+            <button id="winner-home">القائمة الرئيسية</button>
+            <button id="play-again">العب مرة أخرى</button>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(registration => {
+                console.log("Service Worker registered!");
+            })
+            .catch(error => {
+                console.error("Service Worker error:", error);
+            });
+    });
+}
+</script>
+
+</body>
+</html>
